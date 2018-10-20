@@ -1,0 +1,58 @@
+-- Q1: What was the hottest day in our data set? Where was that?
+
+SELECT
+	date,
+	zip,
+	MAX(maxtemperaturef) as max_temp
+FROM
+	weather
+GROUP BY
+	zip,
+	date
+ORDER BY
+	MAX(maxtemperaturef) 
+	DESC;
+--Result: Max temp was 134 in zip 94063 on November 17, 2015.
+--A quick Google search reveals this to be Redwood City, CA.
+
+--Q2: How many trips started at each station?
+
+SELECT
+	start_station
+	COUNT(*) as trip_no
+FROM 
+	trips
+GROUP BY
+	start_station
+ORDER BY
+	COUNT(*)
+	DESC;
+	
+	--Q3: What's the shortest trip that happened?
+	
+SELECT 
+	bike_id,
+	MIN(duration) as trip_duration,
+FROM 
+	trips
+GROUP BY
+	bike_id
+ORDER BY
+	MIN(duration);
+	
+	--Result: The shortest trip duration was 60 (minutes? seconds? 
+	--the  table does not make it clear what unit of measure this is)
+	
+	
+	--Q4:What is the average trip duration, by end station?
+
+SELECT
+		end_station,
+		AVG(duration)
+FROM
+	trips
+GROUP BY
+	end_station
+ORDER BY
+	AVG(duration)
+	DESC;
