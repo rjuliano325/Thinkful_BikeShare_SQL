@@ -1,0 +1,30 @@
+--Drill 1
+SELECT 
+	trip_id,
+	duration
+FROM 	
+	trips
+WHERE
+	duration > 500
+ORDER BY
+	duration;
+	
+-- Drill 2
+
+SELECT 
+	*
+FROM
+	stations
+WHERE 
+	station_id = 84;
+	
+--Drill 3
+
+SELECT 
+	mintermperaturef
+FROM
+	weather
+WHERE
+	events = 'Rain'
+AND
+	zip = 94301;
