@@ -1,0 +1,41 @@
+--Most expensive listing in the table:
+SELECT
+	id,
+	name,
+	MAX(price)
+FROM sfo_listings
+GROUP BY
+	id,
+	name
+ORDER BY
+	MAX(price)
+	DESC;
+	
+	--Most popular neighborhood
+
+SELECT 
+	neighbourhood,
+	MAX(reviews_per_month)
+FROM
+	sfo_listings
+GROUP BY
+	neighbourhood
+ORDER BY
+	MAX(reviews_per_month)
+	DESC;
+	
+	--What time of year is the cheapest time to go to your city? What about the busiest?
+SELECT
+	c.listing_id,
+	c.calender_date,
+	l.id,
+	AVG(l.price)
+FROM 
+	sfo_calender c
+JOIN 
+	sfo_listings l
+ON
+	c.listing_id = l.id
+GROUP BY 2,1,3
+ORDER BY
+AVG(l.price);
